@@ -19,3 +19,91 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+
+td {
+  text-align: center;
+}
+
+thead {
+  border-bottom: lightGrey solid 4px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-style: italic;
+}
+
+tfoot {
+  border-top: lightGrey solid 4px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.obContainer {
+  max-width: 50%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.thead {
+  border-bottom: black solid 4px;
+}
+
+.tfoot {
+  border-top: black solid 4px;
+}
+
+.tableContainer {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.asks {
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  background-image: linear-gradient(to left, #ffcccc 0%, white 100%);
+  background-size: 0%;
+  border-left: black solid 4px;
+  border-right: black solid 4px;
+  font-style: italic;
+  font-size: 125%;
+}
+
+.bids {
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to right, #99ffcc 0%, white 100%);
+  background-size: 0%;
+  border-left: black solid 4px;
+  border-right: black solid 4px;
+  font-style: italic;
+  font-size: 125%;
+}
+
+.ask:last-of-type {
+  font-weight: bold;
+}
+
+.bid:first-of-type {
+  font-weight: bold;
+  border-top: lightGrey solid 4px;
+}
+
+.column {
+  border-bottom: lightGrey dashed 2px;
+}
+
+.obCenter {
+  border: lightGrey dashed 2px;
+}

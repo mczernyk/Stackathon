@@ -5,4 +5,8 @@
  */
 export {default as Navbar} from './navbar'
 export {default as UserHome} from './user-home'
+export {default as Main} from './Main'
+export {default as Orderbook} from './Orderbook'
+export {default as Bids} from './Bids'
+export {default as Asks} from './Asks'
 export {Login, Signup} from './auth-form'
