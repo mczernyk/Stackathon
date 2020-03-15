@@ -4,27 +4,50 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
+import {withStyles} from '@material-ui/core/styles'
+import {Button} from '@material-ui/core'
+
+const styles = {}
+
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <h1>BOILERMAKER</h1>
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      )}
-    </nav>
-    <hr />
+  <div className="topContainer">
+    <div>
+      <Link to="/main">
+        <Button style={{color: 'white'}} size="large">
+          <h1>
+            <i>MEX</i>Trix
+          </h1>
+        </Button>
+      </Link>
+    </div>
+    <div>
+      <nav>
+        {isLoggedIn ? (
+          <div>
+            {/* The navbar will show these links after you log in */}
+            <a href="#" onClick={handleClick}>
+              Logout
+            </a>
+          </div>
+        ) : (
+          <div>
+            {/* The navbar will show these links before you log in */}
+            <Link to="/login">
+              <Button style={{color: 'white'}} size="large">
+                {' '}
+                Login
+              </Button>
+            </Link>
+            <Link to="/signup">
+              <Button style={{color: 'white'}} size="large">
+                {' '}
+                Sign Up
+              </Button>
+            </Link>
+          </div>
+        )}
+      </nav>
+    </div>
   </div>
 )
 

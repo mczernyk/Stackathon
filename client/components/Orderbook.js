@@ -43,27 +43,25 @@ class Orderbook extends React.Component {
     }
 
     return (
-      <div className="container">
-        <div className="obContainer">
-          <table>
-            <thead>
-              <tr>
-                <th>Ask Total</th>
-                <th>Ask Quantity</th>
-                <th className="thead" />
-              </tr>
-            </thead>
-            <tfoot>
-              <tr>
-                <td>Bid Total</td>
-                <td>Bid Quantity</td>
-                <td className="tfoot"> </td>
-              </tr>
-            </tfoot>
-            <tbody>{showOrders(Asks, asksArray).reverse()}</tbody>
-            <tbody>{showOrders(Bids, bidsArray)}</tbody>
-          </table>
-        </div>
+      <div className="obChart">
+        <table>
+          <thead>
+            <tr>
+              <th>Ask Total</th>
+              <th>Ask Quantity</th>
+              <th className="thead" />
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <td>Bid Total</td>
+              <td>Bid Quantity</td>
+              <td className="tfoot"> </td>
+            </tr>
+          </tfoot>
+          <tbody>{showOrders(Asks, asksArray).reverse()}</tbody>
+          <tbody>{showOrders(Bids, bidsArray)}</tbody>
+        </table>
       </div>
     )
   }

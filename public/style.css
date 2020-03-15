@@ -1,9 +1,15 @@
 body {
-  font-family: sans-serif;
+  font-family: Arial Narrow, sans-serif;
+  color: white;
+  background-color: #3b5264;
 }
 
 a {
   text-decoration: none;
+}
+
+h2 {
+  font-size: larger;
 }
 
 label {
@@ -30,6 +36,10 @@ td {
   text-align: center;
 }
 
+th {
+  background-color: #3b5264;
+}
+
 thead {
   border-bottom: lightGrey solid 4px;
   text-transform: uppercase;
@@ -44,24 +54,74 @@ tfoot {
   font-style: italic;
 }
 
-.container {
+.mainContainer {
   display: flex;
+  flex-direction: column;
+}
+
+.topContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.bottomContainer {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  margin: 10px;
 }
 
 .obContainer {
-  max-width: 50%;
   border-collapse: collapse;
   table-layout: fixed;
 }
 
+.llContainer {
+  display: flex;
+}
+
+.lbContainer {
+  display: flex;
+  width: 100%;
+}
+
+.lbChart {
+  width: 100%;
+  height: 600px;
+  background-color: rgba(56, 119, 161, 0.9);
+  color: white;
+}
+
+.llChart {
+  width: 350px;
+  height: 550px;
+  background-color: rgba(56, 119, 161, 0.9);
+  color: white;
+}
+
+.obChart {
+  height: 600px;
+  color: white;
+}
+
 .thead {
-  border-bottom: black solid 4px;
+  border-bottom: white solid 4px;
 }
 
 .tfoot {
-  border-top: black solid 4px;
+  border-top: white solid 4px;
 }
 
 .tableContainer {
@@ -73,20 +133,30 @@ tfoot {
 .asks {
   background-repeat: no-repeat;
   background-position: 100% 100%;
-  background-image: linear-gradient(to left, #ffcccc 0%, white 100%);
+  background-image: linear-gradient(
+    to left,
+    #ffcccc 0%,
+    rgba(56, 119, 161, 0.9) 100%
+  );
   background-size: 0%;
-  border-left: black solid 4px;
-  border-right: black solid 4px;
+  background-color: rgba(56, 119, 161, 0.9);
+  border-left: white solid 4px;
+  border-right: white solid 4px;
   font-style: italic;
   font-size: 125%;
 }
 
 .bids {
   background-repeat: no-repeat;
-  background-image: linear-gradient(to right, #99ffcc 0%, white 100%);
+  background-image: linear-gradient(
+    to right,
+    #99ffcc 0%,
+    rgba(56, 119, 161, 0.9) 100%
+  );
   background-size: 0%;
-  border-left: black solid 4px;
-  border-right: black solid 4px;
+  background-color: rgba(56, 119, 161, 0.9);
+  border-left: white solid 4px;
+  border-right: white solid 4px;
   font-style: italic;
   font-size: 125%;
 }
