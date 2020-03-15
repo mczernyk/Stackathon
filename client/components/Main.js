@@ -1,6 +1,8 @@
+/* eslint-disable max-statements, complexity*/
+
 import React from 'react'
 import Websocket from 'react-websocket'
-import {Orderbook, LiquidationList, LiquidationBubble} from '.'
+import {Orderbook, LiquidationList, LiquidationBubble, WhaleList} from '.'
 import dateFormat from 'dateformat'
 
 class Main extends React.Component {
@@ -10,13 +12,15 @@ class Main extends React.Component {
       instrument: 'XBTUSD',
       askOrders: [],
       bidOrders: [],
-      liquidations: []
+      liquidations: [],
+      whaleOrders: []
     }
-    // this.handleData = this.handleData.bind(this)
+    this.handleData = this.handleData.bind(this)
   }
   // handleData() {
   handleData(apiData) {
     let data = JSON.parse(apiData)
+
     // console.log('rawdata', data)
 
     // let data =
@@ -51,6 +55,7 @@ class Main extends React.Component {
 
     // console.log('data', data)
     // console.log('table', data.table)
+
     if (data.table === 'liquidation' && data.action === 'insert') {
       let liqData = data.data[0]
       // side = "Sell" = liq long /"Buy"= liq short
@@ -81,6 +86,43 @@ class Main extends React.Component {
       console.log('liq', this.state.liquidations)
     }
 
+    if (data.table === 'orderBookL2_25' && data.action === 'insert') {
+      if (!data.data) {
+        console.log('no data')
+        return
+      }
+      let orderData = data.data
+      const day = dateFormat(new Date(), 'yyyy-mm-dd h:MM:ss')
+
+      let whaleArray = orderData.map(order => {
+        if (order.size > 500000) {
+          return {
+            time: day,
+            side: order.side,
+            quantity: order.size,
+            price: order.price
+          }
+        }
+      })
+
+      for (let i = 0; i < whaleArray.length; i++) {
+        if (whaleArray[i]) {
+          if (this.state.whaleOrders.length < 13) {
+            this.setState(prevState => ({
+              whaleOrders: [whaleArray[i], ...prevState.whaleOrders]
+            }))
+          } else {
+            let newState = this.state.whaleOrders.slice(0, -1)
+            this.setState({
+              whaleOrders: [whaleArray[i], ...newState]
+            })
+          }
+        }
+      }
+      console.log('array', whaleArray)
+      console.log('whale', this.state.whaleOrders)
+    }
+
     if (data.table === 'orderBook10') {
       if (!data.data) {
         console.log('no data')
@@ -94,6 +136,7 @@ class Main extends React.Component {
       let askOrders = orderData.asks.map(ask => {
         return {
           time: time,
+          side: 'Sell',
           price: ask[0],
           quantity: ask[1]
         }
@@ -102,6 +145,7 @@ class Main extends React.Component {
       let bidOrders = orderData.bids.map(bid => {
         return {
           time: time,
+          side: 'Buy',
           price: bid[0],
           quantity: bid[1]
         }
@@ -120,7 +164,7 @@ class Main extends React.Component {
     return (
       <div className="mainContainer">
         <Websocket
-          url="wss://www.bitmex.com/realtime?subscribe=liquidation:XBTUSD,orderBook10:XBTUSD"
+          url="wss://www.bitmex.com/realtime?subscribe=liquidation:XBTUSD,orderBook10:XBTUSD,orderBookL2_25:XBTUSD"
           onMessage={this.handleData.bind(this)}
         />
 
@@ -129,6 +173,13 @@ class Main extends React.Component {
             <h2>{this.state.instrument} Liquidations</h2>
             <div className="llContainer">
               <LiquidationList liquidations={this.state.liquidations} />
+              <br />
+            </div>
+          </div>
+          <div className="section">
+            <h2>{this.state.instrument} Whale Tracker</h2>
+            <div className="llContainer">
+              <WhaleList whaleOrders={this.state.whaleOrders} />
               <br />
             </div>
           </div>

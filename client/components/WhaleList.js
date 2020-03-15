@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-class LiquidationList extends React.Component {
+class WhaleList extends React.Component {
   constructor() {
     super()
   }
 
   render() {
-    const {liquidations} = this.props
+    const {whaleOrders} = this.props
 
     return (
       <div className="llChart">
@@ -21,12 +21,12 @@ class LiquidationList extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {liquidations.map((liquidation, i) => (
+            {whaleOrders.map((order, i) => (
               <tr key={i}>
-                <td>{liquidation.time}</td>
-                <td>{liquidation.side}</td>
-                <td>{liquidation.price}</td>
-                <td>{liquidation.quantity}</td>
+                <td>{order.time}</td>
+                <td>{order.side}</td>
+                <td>{order.price}</td>
+                <td>{order.quantity}</td>
               </tr>
             ))}
           </tbody>
@@ -36,11 +36,11 @@ class LiquidationList extends React.Component {
   }
 }
 
-LiquidationList.propTypes = {
+WhaleList.propTypes = {
   time: PropTypes.string,
   side: PropTypes.string,
   price: PropTypes.number,
   quantity: PropTypes.number
 }
 
-export default LiquidationList
+export default WhaleList

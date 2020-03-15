@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import {Chart} from 'react-charts'
 
 export const LiquidationBubble = props => {
-  const {liquidations, askOrders, bidOrders} = props
+  const {liquidations, whaleOrders} = props
   // const data = React.useMemo( () => liquidations.map(liquidation => (
   //   {
   //     label: 'Series 1',
