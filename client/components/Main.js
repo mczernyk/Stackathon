@@ -36,6 +36,7 @@ class Main extends React.Component {
       let liqQty = liqData.leavesQty
       const day = dateFormat(new Date(), 'yyyy-mm-dd h:MM:ss')
 
+      // create single trade liquidation object
       let liquidationObj = {
         type: 'liquidation',
         time: day,
@@ -44,6 +45,7 @@ class Main extends React.Component {
         quantity: liqQty
       }
 
+      // set state, limit length
       if (this.state.liquidations.length < 13) {
         this.setState(prevState => ({
           liquidations: [liquidationObj, ...prevState.liquidations]
@@ -66,6 +68,7 @@ class Main extends React.Component {
       let orderData = data.data
       const day = dateFormat(new Date(), 'yyyy-mm-dd h:MM:ss')
 
+      // create whale order object; filter size
       let whaleArray = orderData.map(order => {
         if (order.size > 100000) {
           return {
@@ -78,6 +81,7 @@ class Main extends React.Component {
         }
       })
 
+      // set state with filtered orders, ignore trades below threshold, limit length
       for (let i = 0; i < whaleArray.length; i++) {
         if (whaleArray[i]) {
           if (this.state.whaleOrders.length < 13) {
