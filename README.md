@@ -1,6 +1,6 @@
 # MEXTRIX
 
-## Track Bitmex whale activity and liquidations in real time.
+### Track Bitmex whale activity and liquidations in real time.
 
 > "The whales do not sing because they have an answer, they sing because they have a song."
 > -Gregory Colbert
