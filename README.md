@@ -1,11 +1,11 @@
-# **_MEX_\*\***TRIX\*\*
+# \_MEX_TRIX
 
 ### Track [Bitmex](https://www.bitmex.com/register/dlOCfE) whale activity and liquidations in real time.
 
 > "The whales do not sing because they have an answer, they sing because they have a song."
 > -Gregory Colbert
 
-What can we learn from watching whales? **_MEX_\*\***TRIX** provides a visualization of **[Bitmex](https://www.bitmex.com/register/dlOCfE)** Orderbook data in real time as well as notifications for trades greater than **_100,000 contracts_\*\* and liquidations.
+What can we learn from watching whales? **\_MEX_TRIX** provides a visualization of **[Bitmex](https://www.bitmex.com/register/dlOCfE)** Orderbook data in real time as well as notifications for trades greater than \*\*_100,000 contracts_\*\* and liquidations.
 
 _What does it all mean?_
 
@@ -30,7 +30,7 @@ npm install
 npm run start-dev
 ```
 
-That's it! View **_MEX_\*\***TRIX\*\* locally on [localhost 8080](http://localhost:8080/)
+That's it! View **\_MEX_TRIX** locally on [localhost 8080](http://localhost:8080/)
 
 Check out the latest deployment [here](https://stackathon-mc.herokuapp.com/)
 
