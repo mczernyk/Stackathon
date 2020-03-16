@@ -10,7 +10,7 @@ import {Button} from '@material-ui/core'
 const styles = {}
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div className="topContainer">
+  <div className="navContainer">
     <div>
       <Link to="/main">
         <Button style={{textDecoration: 'none', color: 'white'}} size="large">
@@ -23,21 +23,47 @@ const Navbar = ({handleClick, isLoggedIn}) => (
     <div>
       <nav>
         {isLoggedIn ? (
-          <div>
+          <div className="navTopButtons">
             {/* The navbar will show these links after you log in */}
-            <Button
-              variant="outlined"
-              style={{textDecoration: 'none', color: 'white'}}
-              size="large"
-            >
-              <a href="#" onClick={handleClick}>
+            <div className="mexButton">
+              <Button
+                style={{textDecoration: 'none', color: 'white'}}
+                variant="outlined"
+                size="large"
+                a
+                href="https://www.bitmex.com/register/dlOCfE"
+              >
+                10% Off Bitmex
+              </Button>
+            </div>
+            <div className="mexButton">
+              <Button
+                a
+                href="#"
+                onClick={handleClick}
+                variant="outlined"
+                style={{textDecoration: 'none', color: 'white'}}
+                size="large"
+              >
+                {' '}
                 Logout
-              </a>
-            </Button>
+              </Button>
+            </div>
           </div>
         ) : (
-          <div>
+          <div className="navTopButtons">
             {/* The navbar will show these links before you log in */}
+            <div className="mexButton">
+              <Button
+                style={{textDecoration: 'none', color: 'white'}}
+                variant="outlined"
+                size="large"
+                a
+                href="https://www.bitmex.com/register/dlOCfE"
+              >
+                10% Off Bitmex
+              </Button>
+            </div>
             <Link to="/login">
               <Button
                 variant="outlined"

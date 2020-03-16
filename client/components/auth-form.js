@@ -44,11 +44,13 @@ const AuthForm = props => {
         <div>
           <Link to="/auth/google">
             <Button
+              a
+              href="/auth/google"
               variant="outlined"
               style={{textDecoration: 'none', color: 'white'}}
               size="large"
             >
-              <a href="/auth/google">{displayName} with Google</a>
+              {displayName} with Google
             </Button>
           </Link>
         </div>

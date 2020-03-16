@@ -54,6 +54,28 @@ tfoot {
   font-style: italic;
 }
 
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.navElement {
+  display: flex;
+  flex-direction: column;
+}
+
+.navTopButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.mexButton {
+  padding: 16px;
+}
+
 .loginContainer {
   display: flex;
   flex-direction: row;

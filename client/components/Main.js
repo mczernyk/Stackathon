@@ -1,7 +1,7 @@
 /* eslint-disable max-statements, complexity*/
 
 import React from 'react'
-import Websocket from 'react-websocket'
+// import Websocket from 'react-websocket'
 import {
   Orderbook,
   LiquidationList,
@@ -21,6 +21,7 @@ class Main extends React.Component {
       liquidations: [],
       whaleOrders: []
     }
+    this.handleData = this.handleData.bind(this)
   }
 
   handleData(apiData) {
@@ -132,10 +133,10 @@ class Main extends React.Component {
   render() {
     return (
       <div className="mainContainer">
-        <Websocket
+        {/*<Websocket
           url="wss://www.bitmex.com/realtime?subscribe=liquidation:XBTUSD,orderBook10:XBTUSD,orderBookL2_25:XBTUSD"
           onMessage={this.handleData.bind(this)}
-        />
+        />*/}
 
         <div className="topContainer">
           <div className="section">
