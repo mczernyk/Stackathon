@@ -13,7 +13,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
   <div className="topContainer">
     <div>
       <Link to="/main">
-        <Button style={{color: 'white'}} size="large">
+        <Button style={{textDecoration: 'none', color: 'white'}} size="large">
           <h1>
             <i>MEX</i>Trix
           </h1>
@@ -25,21 +25,35 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         {isLoggedIn ? (
           <div>
             {/* The navbar will show these links after you log in */}
-            <a href="#" onClick={handleClick}>
-              Logout
-            </a>
+            <Button
+              variant="outlined"
+              style={{textDecoration: 'none', color: 'white'}}
+              size="large"
+            >
+              <a href="#" onClick={handleClick}>
+                Logout
+              </a>
+            </Button>
           </div>
         ) : (
           <div>
             {/* The navbar will show these links before you log in */}
             <Link to="/login">
-              <Button style={{color: 'white'}} size="large">
+              <Button
+                variant="outlined"
+                style={{textDecoration: 'none', color: 'white'}}
+                size="large"
+              >
                 {' '}
                 Login
               </Button>
             </Link>
             <Link to="/signup">
-              <Button style={{color: 'white'}} size="large">
+              <Button
+                variant="outlined"
+                style={{textDecoration: 'none', color: 'white'}}
+                size="large"
+              >
                 {' '}
                 Sign Up
               </Button>

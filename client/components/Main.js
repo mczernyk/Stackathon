@@ -2,7 +2,13 @@
 
 import React from 'react'
 import Websocket from 'react-websocket'
-import {Orderbook, LiquidationList, LiquidationBubble, WhaleList} from '.'
+import {
+  Orderbook,
+  LiquidationList,
+  LiquidationBubble,
+  LiquidationBubble1,
+  WhaleList
+} from '.'
 import dateFormat from 'dateformat'
 
 class Main extends React.Component {
@@ -15,47 +21,12 @@ class Main extends React.Component {
       liquidations: [],
       whaleOrders: []
     }
-    this.handleData = this.handleData.bind(this)
   }
-  // handleData() {
+
   handleData(apiData) {
     let data = JSON.parse(apiData)
 
-    // console.log('rawdata', data)
-
-    // let data =
-    //   {
-    //   table: 'orderBook10',
-    //   data:
-    //     [{
-    //       symbol: "XBTUSD",
-    //       timestamp: "2020-03-12T05:16:54.535Z",
-    //       asks: [[4500, 3000], [4510, 20000], [4520, 4000], [4530, 50000], [4540, 3000], [4550, 20000], [4560, 4000], [4570, 50000], [4580, 3000], [4590, 20000]],
-    //       bids: [[4500, 3000], [4510, 20000], [4520, 4000], [4530, 50000], [4540, 3000], [4550, 20000], [4560, 4000], [4570, 50000], [4580, 3000], [4590, 20000]]
-    //     }]
-    //   }
-    // let data = {
-    //   table: 'liquidation',
-    //   action: 'insert',
-    //   data:
-    //     {time: "2020-03-14 6:51:44", side: "Buy",
-    //     price: 5277.5,
-    //     quantity: 5301}
-    //   },
-    //   {
-    //   table: 'orderBook10',
-    //   data:
-    //     {
-    //       symbol: "XBTUSD",
-    //       timestamp: "2020-03-12T05:16:54.535Z",
-    //       asks: [[4500, 3000], [4510, 20000], [4520, 4000], [4530, 50000], [4540, 3000], [4550, 20000], [4560, 4000], [4570, 50000], [4580, 3000], [4590, 20000]],
-    //       bids: [[4500, 3000], [4510, 20000], [4520, 4000], [4530, 50000], [4540, 3000], [4550, 20000], [4560, 4000], [4570, 50000], [4580, 3000], [4590, 20000]]
-    //     }
-    //   }
-
-    // console.log('data', data)
-    // console.log('table', data.table)
-
+    // LIQUIDATIONS
     if (data.table === 'liquidation' && data.action === 'insert') {
       let liqData = data.data[0]
       // side = "Sell" = liq long /"Buy"= liq short
@@ -65,6 +36,7 @@ class Main extends React.Component {
       const day = dateFormat(new Date(), 'yyyy-mm-dd h:MM:ss')
 
       let liquidationObj = {
+        type: 'liquidation',
         time: day,
         side: liqSide,
         price: liqPrice,
@@ -81,11 +53,10 @@ class Main extends React.Component {
           liquidations: [liquidationObj, ...newState]
         })
       }
-
       console.log('liqobj', liquidationObj)
       console.log('liq', this.state.liquidations)
     }
-
+    // WHALE ORDER TRACKER - ORDER SIZE OVER $100,000
     if (data.table === 'orderBookL2_25' && data.action === 'insert') {
       if (!data.data) {
         console.log('no data')
@@ -95,8 +66,9 @@ class Main extends React.Component {
       const day = dateFormat(new Date(), 'yyyy-mm-dd h:MM:ss')
 
       let whaleArray = orderData.map(order => {
-        if (order.size > 500000) {
+        if (order.size > 100000) {
           return {
+            type: 'whale',
             time: day,
             side: order.side,
             quantity: order.size,
@@ -119,17 +91,15 @@ class Main extends React.Component {
           }
         }
       }
-      console.log('array', whaleArray)
-      console.log('whale', this.state.whaleOrders)
     }
 
+    // ORDER BOOK
     if (data.table === 'orderBook10') {
       if (!data.data) {
         console.log('no data')
         return
       }
       let orderData = data.data[0]
-      // console.log('order', orderData)
 
       // get each ask price/amount from array; convert to obj for askOrders array
       let time = dateFormat(orderData.timestamp, 'yyyy-mm-dd h:MM:ss')
@@ -152,7 +122,6 @@ class Main extends React.Component {
       })
 
       // set state with askOrders/bidOrders arrays of ask/bid objects
-
       this.setState({
         askOrders: askOrders,
         bidOrders: bidOrders
@@ -176,6 +145,7 @@ class Main extends React.Component {
               <br />
             </div>
           </div>
+
           <div className="section">
             <h2>{this.state.instrument} Whale Tracker</h2>
             <div className="llContainer">
@@ -183,6 +153,7 @@ class Main extends React.Component {
               <br />
             </div>
           </div>
+
           <div className="section">
             <h2>{this.state.instrument} Orderbook</h2>
             <div className="obContainer">
@@ -193,14 +164,14 @@ class Main extends React.Component {
             </div>
           </div>
         </div>
+
         <div className="bottomContainer">
           <h2>{this.state.instrument} Liquidation & Whale Tracker</h2>
 
           <div className="lbContainer">
-            <LiquidationBubble
+            <LiquidationBubble1
               liquidations={this.state.liquidations}
-              askOrders={this.state.askOrders}
-              bidOrders={this.state.bidOrders}
+              whaleOrders={this.state.whaleOrders}
             />
             <br />
             <br />

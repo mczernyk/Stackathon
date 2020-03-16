@@ -48,14 +48,14 @@ class Orderbook extends React.Component {
           <thead>
             <tr>
               <th>Ask Total</th>
-              <th>Ask Quantity</th>
+              <th>Ask Size</th>
               <th className="thead" />
             </tr>
           </thead>
           <tfoot>
             <tr>
               <td>Bid Total</td>
-              <td>Bid Quantity</td>
+              <td>Bid Size</td>
               <td className="tfoot"> </td>
             </tr>
           </tfoot>

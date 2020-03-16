@@ -54,6 +54,13 @@ tfoot {
   font-style: italic;
 }
 
+.loginContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+}
+
 .mainContainer {
   display: flex;
   flex-direction: column;
@@ -105,7 +112,7 @@ tfoot {
 }
 
 .llChart {
-  width: 350px;
+  width: 300px;
   max-height: 550px;
   background-color: rgba(56, 119, 161, 0.9);
   color: white;

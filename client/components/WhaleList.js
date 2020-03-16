@@ -17,7 +17,7 @@ class WhaleList extends React.Component {
               <th>Time</th>
               <th>Side</th>
               <th>Price</th>
-              <th>Quantity</th>
+              <th>Size</th>
             </tr>
           </thead>
           <tbody>
