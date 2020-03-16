@@ -33,3 +33,20 @@ npm run start-dev
 That's it! View **MEXTRIX** locally on [localhost 8080](http://localhost:8080/)
 
 Check out the latest deployment [here](https://stackathon-mc.herokuapp.com/)
+
+## Background
+
+This project was built as a submission for **_[Fullstack Academy's](https://www.fullstackacademy.com/)_** **Stackathon**, where students have 4 days to build an application from scratch. My goal was to learn more about utilizing and visualizing real-time external API data.
+
+As a Bitcoin trader, I've always been interested in observing the correlation between large trades, liquidations, and price moves. In the past, I relied on several separate twitter bots to provide alerts for these events. I'd have to switch between my Orderbook feed and this stream of data to try to piece together an explanation for market moves, which was a less than perfect system in real time.
+
+Eventually, I hope to build out this platform in several ways:
+
+**_Added functionality:_**
+*display this liquidation and whale data in a real-time, interactive bubble chart.
+*provide live snapshots of buy and sell side Orderbook liquidity for all resting orders; display in a simple chart to indicate current market sentiment.
+\*Add alerts (audio, notifications).
+
+**_Future Content:_**
+*Add educational information re: Bitmex trading basics including contract structure, functionality & tools (leverage types, order types, stop losses), basic technical analysis techniques, and strategy fundamentals.
+*Expand metrics to other exchanges (Deribit, Bybit, Bitfinex, Binance) and altcoins.
