@@ -1,10 +1,9 @@
-#MEXTRIX
+# MEXTRIX
 
-##Track Bitmex whale activity and liquidations in real time.
+## Track Bitmex whale activity and liquidations in real time.
 
 > "The whales do not sing because they have an answer, they sing because they have a song."
-
--Gregory Colbert
+> -Gregory Colbert
 
 What can we learn from watching whales? MEXTRIX provides a visualization of Bitmex Orderbook data in real time as well as notifications for trades greater than 100,000 contracts and liquidations.
 
