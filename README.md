@@ -44,14 +44,14 @@ Eventually, I hope to build out this platform in several ways:
 
 **_Added functionality:_**
 
-\*display this liquidation and whale data in a real-time, interactive bubble chart.
+* display this liquidation and whale data in a real-time, interactive bubble chart.
 
-\*provide live snapshots of buy and sell side Orderbook liquidity for all resting orders; display in a simple chart to indicate current market sentiment.
+* provide live snapshots of buy and sell side Orderbook liquidity for all resting orders; display in a simple chart to indicate current market sentiment.
 
-\*Add alerts (audio, notifications).
+* Add alerts (audio, notifications).
 
 **_Future Content:_**
 
-\*Add educational information re: Bitmex trading basics including contract structure, functionality & tools (leverage types, order types, stop losses), basic technical analysis techniques, and strategy fundamentals.
+* Add educational information re: Bitmex trading basics including contract structure, functionality & tools (leverage types, order types, stop losses), basic technical analysis techniques, and strategy fundamentals.
 
-\*Expand metrics to other exchanges (Deribit, Bybit, Bitfinex, Binance) and altcoins.
+* Expand metrics to other exchanges (_Deribit, Bybit, Bitfinex, Binance_) and altcoins.
