@@ -5,6 +5,8 @@ MEXTRIX - Track Bitmex whale activity and liquidations in real time.
 
 What can we learn from watching whales? MEXTRIX provides Bitmex Orderbook data in real time as well as notifications for trades greater than 100,000 contracts and liquidations. What does it all mean? That is for you to decide.
 
+![Image description]('/public/Screen Shot 2020-03-16 at 2.32.07 AM.png')
+
 ## Setup
 
 Follow the steps below to clone and install this repository locally.
