@@ -42,6 +42,7 @@ th {
 
 thead {
   border-bottom: lightGrey solid 4px;
+  background-color: #3b5264;
   text-transform: uppercase;
   font-weight: bold;
   font-style: italic;
@@ -69,11 +70,14 @@ tfoot {
 .navTopButtons {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: wrap-reverse;
+  justify-content: flex-end;
 }
 
 .mexButton {
   padding: 16px;
+  min-width: 20%;
+  max-width: 70%;
 }
 
 .loginContainer {
@@ -91,6 +95,7 @@ tfoot {
 .topContainer {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap-reverse;
   justify-content: space-between;
   width: 100%;
 }
@@ -104,8 +109,20 @@ tfoot {
 
 .section {
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   align-items: center;
+  width: 25%;
+  min-width: 250px;
+}
+
+.sectionOb {
+  display: flex;
+  flex-grow: 2;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  min-width: 300px;
 }
 
 .container {
@@ -134,7 +151,7 @@ tfoot {
 }
 
 .llChart {
-  width: 300px;
+  min-width: 300px;
   max-height: 550px;
   background-color: rgba(56, 119, 161, 0.9);
   color: white;

@@ -6,20 +6,19 @@ import PropTypes from 'prop-types'
 import {Chart} from 'react-charts'
 
 export const LiquidationBubble = props => {
-  const {liquidations, whaleOrders} = props
+  const {whaleAndLiq} = props
 
-  const orderData = [...whaleOrders, ...liquidations]
   var replaced = {'-': '', ' ': '', ':': ''}
 
-  const [ourData, setData] = useState(orderData)
+  // const [ourData, setData] = useState(orderData)
 
-  useEffect(() => {
-    if (orderData.length) {
-      orderData.map(each => {
-        setData(currentData => [...currentData, each])
-      })
-    }
-  }, [])
+  // // useEffect(() => {
+  // //   if (orderData.length) {
+  // //     orderData.map(each => {
+  // //       setData(currentData => [...currentData, each])
+  // //     })
+  // //   }
+  // // }, [])
 
   const series = React.useMemo(
     () => ({
@@ -39,7 +38,7 @@ export const LiquidationBubble = props => {
     () => [
       {
         label: `Whale Sell`,
-        data: orderData
+        data: whaleAndLiq
           .filter(order => order.type === 'whale' && order.side === 'Sell')
           .map(order => [
             +order.time.replace(/[- :]/g, m => replaced[m]),
@@ -49,7 +48,7 @@ export const LiquidationBubble = props => {
       },
       {
         label: `Liquidation`,
-        data: orderData
+        data: whaleAndLiq
           .filter(order => order.type === 'liquidation')
           .map(order => [
             +order.time.replace(/[- :]/g, m => replaced[m]),
@@ -59,7 +58,7 @@ export const LiquidationBubble = props => {
       },
       {
         label: `Whale Buy`,
-        data: orderData
+        data: whaleAndLiq
           .filter(order => order.type === 'whale' && order.side === 'Buy')
           .map(order => [
             +order.time.replace(/[- :]/g, m => replaced[m]),

@@ -19,7 +19,8 @@ class Main extends React.Component {
       askOrders: [],
       bidOrders: [],
       liquidations: [],
-      whaleOrders: []
+      whaleOrders: [],
+      whaleAndLiq: []
     }
     // this.handleData = this.handleData.bind(this)
   }
@@ -49,13 +50,18 @@ class Main extends React.Component {
       if (this.state.liquidations.length < 13) {
         this.setState(prevState => ({
           liquidations: [liquidationObj, ...prevState.liquidations]
+          // whaleAndLiq: [...prevState.liquidations, ...prevState.whaleOrders]
         }))
       } else {
         let newState = this.state.liquidations.slice(0, -1)
-        this.setState({
+        this.setState(prevState => ({
           liquidations: [liquidationObj, ...newState]
-        })
+          // whaleAndLiq: [newState, ...prevState.whaleOrders]
+        }))
       }
+      this.setState(prevState => ({
+        whaleAndLiq: [...prevState.liquidations, ...prevState.whaleOrders]
+      }))
       console.log('liqobj', liquidationObj)
       console.log('liq', this.state.liquidations)
     }
@@ -87,15 +93,21 @@ class Main extends React.Component {
           if (this.state.whaleOrders.length < 13) {
             this.setState(prevState => ({
               whaleOrders: [whaleArray[i], ...prevState.whaleOrders]
+              // whaleAndLiq: [...prevState.liquidations, ...prevState.whaleOrders]
             }))
           } else {
             let newState = this.state.whaleOrders.slice(0, -1)
-            this.setState({
+            this.setState(prevState => ({
               whaleOrders: [whaleArray[i], ...newState]
-            })
+              // whaleAndLiq: [...prevState.liquidations, ...newState]
+            }))
           }
         }
       }
+      this.setState(prevState => ({
+        whaleAndLiq: [...prevState.liquidations, ...prevState.whaleOrders]
+      }))
+      console.log('whale an liq', this.state.whaleAndLiq)
     }
 
     // ORDER BOOK
@@ -159,7 +171,7 @@ class Main extends React.Component {
             </div>
           </div>
 
-          <div className="section">
+          <div className="sectionOb">
             <h2>{this.state.instrument} Orderbook</h2>
             <div className="obContainer">
               <Orderbook
@@ -170,18 +182,19 @@ class Main extends React.Component {
           </div>
         </div>
 
-        <div className="bottomContainer">
+        {/*<div className="bottomContainer">
           <h2>{this.state.instrument} Liquidation & Whale Tracker</h2>
 
           <div className="lbContainer">
-            <LiquidationBubble1
+            <LiquidationBubble
               liquidations={this.state.liquidations}
               whaleOrders={this.state.whaleOrders}
+              whaleAndLiq={this.state.whaleAndLiq}
             />
             <br />
             <br />
           </div>
-        </div>
+        </div>*/}
       </div>
     )
   }
