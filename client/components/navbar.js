@@ -27,7 +27,11 @@ const Navbar = ({handleClick, isLoggedIn}) => (
             {/* The navbar will show these links after you log in */}
             <div className="mexButton">
               <Button
-                style={{textDecoration: 'none', color: 'white'}}
+                style={{
+                  textDecoration: 'none',
+                  color: 'white',
+                  textAlign: 'right'
+                }}
                 variant="outlined"
                 size="large"
                 a
@@ -55,7 +59,11 @@ const Navbar = ({handleClick, isLoggedIn}) => (
             {/* The navbar will show these links before you log in */}
             <div className="mexButton">
               <Button
-                style={{textDecoration: 'none', color: 'white'}}
+                style={{
+                  textDecoration: 'none',
+                  color: 'white',
+                  textAlign: 'right'
+                }}
                 variant="outlined"
                 size="large"
                 a
