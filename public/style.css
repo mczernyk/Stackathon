@@ -152,7 +152,7 @@ tfoot {
 
 .llChart {
   min-width: 300px;
-  max-height: 550px;
+  max-height: 575px;
   background-color: rgba(56, 119, 161, 0.9);
   color: white;
 }

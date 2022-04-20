@@ -28,6 +28,14 @@ class Main extends React.Component {
   handleData(apiData) {
     let data = JSON.parse(apiData)
 
+    let sortHelper = ordersArray => {
+      return ordersArray.map(order => {
+        return Object.assign({}, order)
+      })
+    }
+
+    var replaced = {'-': '', ' ': '', ':': ''}
+
     // LIQUIDATIONS
     if (data.table === 'liquidation' && data.action === 'insert') {
       let liqData = data.data[0]
@@ -59,9 +67,31 @@ class Main extends React.Component {
           // whaleAndLiq: [newState, ...prevState.whaleOrders]
         }))
       }
-      this.setState(prevState => ({
-        whaleAndLiq: [...prevState.liquidations, ...prevState.whaleOrders]
-      }))
+      // let combinedState = [...this.state.liquidations, ...this.state.whaleOrders]
+
+      // this.setState({
+      //   whaleAndLiq: combinedState.sort((a, b)=> a.time > b.time)
+      // })
+
+      let combinedState = [
+        ...this.state.liquidations,
+        ...this.state.whaleOrders
+      ]
+
+      combinedState.sort((order1, order2) => {
+        return (
+          +order1.time.replace(/[- :]/g, m => replaced[m]) >
+          +order2.time.replace(/[- :]/g, m => replaced[m])
+        )
+      })
+      // let combinedSort = sortHelper(combinedState).sort((order1, order2) => {
+      //   return +order1.time.replace(/[- :]/g, m => replaced[m]) > +order2.time.replace(/[- :]/g, m => replaced[m])
+      // })
+
+      this.setState({
+        whaleAndLiq: combinedState
+      })
+
       console.log('liqobj', liquidationObj)
       console.log('liq', this.state.liquidations)
     }
@@ -104,10 +134,26 @@ class Main extends React.Component {
           }
         }
       }
-      this.setState(prevState => ({
-        whaleAndLiq: [...prevState.liquidations, ...prevState.whaleOrders]
-      }))
-      console.log('whale an liq', this.state.whaleAndLiq)
+
+      let combinedState = [
+        ...this.state.liquidations,
+        ...this.state.whaleOrders
+      ]
+
+      combinedState.sort((order1, order2) => {
+        return (
+          +order1.time.replace(/[- :]/g, m => replaced[m]) >
+          +order2.time.replace(/[- :]/g, m => replaced[m])
+        )
+      })
+      // let combinedSort = sortHelper(combinedState).sort((order1, order2) => {
+      //   return +order1.time.replace(/[- :]/g, m => replaced[m]) > +order2.time.replace(/[- :]/g, m => replaced[m])
+      // })
+
+      this.setState({
+        whaleAndLiq: combinedState
+      })
+      console.log('whale liq', this.state.whaleAndLiq)
     }
 
     // ORDER BOOK
